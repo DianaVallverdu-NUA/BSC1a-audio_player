@@ -82,8 +82,16 @@
 
         <!-- lower level -> song slider -->
         <div class="width_70 mt_10px container">
-          <p class="mr_20px">00:00</p>
-          <input id="progress_slider" min="0" value="0" class="box_neon_yellow" type="range" />
+          <p id="time_display_current" class="mr_5px">00:00</p>
+          <p>/</p>
+          <p id="time_display_total" class="mr_20px ml_5px">00:00</p>
+          <input
+            id="progress_slider"
+            min="0"
+            value="0"
+            class="box_neon_yellow"
+            type="range"
+          />
         </div>
       </div>
     </div>

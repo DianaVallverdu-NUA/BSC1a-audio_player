@@ -12,6 +12,10 @@ const previousButton = document.getElementById("previous_button");
 const volumeSlider = document.getElementById("volume_slider");
 const progressSlider = document.getElementById("progress_slider");
 
+// text
+const timeDisplayTotal = document.getElementById("time_display_total");
+const timeDisplayCurrent = document.getElementById("time_display_current");
+
 // create audio player
 const audioPlayer = document.createElement("audio");
 audioPlayer.volume = 0.5;
@@ -59,8 +63,14 @@ function onPlayButtonClick() {
 
 // when a new src is loaded, update timings
 function onLoadedMetadata() {
+  // reset progress slider
   progressSlider.max = Math.floor(audioPlayer.duration);
   progressSlider.value = 0;
+
+  // reset time display
+  const minutesSeconds = secondsToMMSS(Math.floor(audioPlayer.duration));
+  timeDisplayTotal.innerHTML = minutesSeconds;
+  timeDisplayCurrent.innerHTML = "00:00";
 }
 audioPlayer.onloadedmetadata = onLoadedMetadata;
 
@@ -100,10 +110,13 @@ function previousSong() {
 
 // as the audio progresses, update slider
 function onTimeUpdate() {
+  // update time display
+  const minutesSeconds = secondsToMMSS(Math.floor(audioPlayer.currentTime));
+  timeDisplayCurrent.innerHTML = minutesSeconds;
+
+  // update slider (if user is not moving it)
   if (movingSlider) return;
-  const proportionalTime =
-    (audioPlayer.currentTime / audioPlayer.duration) * 100;
-  progressSlider.value = Math.floor(proportionalTime);
+  progressSlider.value = Math.floor(audioPlayer.currentTime);
 }
 audioPlayer.ontimeupdate = onTimeUpdate;
 
@@ -111,7 +124,7 @@ audioPlayer.ontimeupdate = onTimeUpdate;
 let movingSlider = false;
 function onProgressSliderChange(event) {
   const sliderValue = Number(event.target.value);
-  const newAudioTime = sliderValue * 0.01 * audioPlayer.duration;
+  const newAudioTime = sliderValue;
   audioPlayer.currentTime = newAudioTime;
   movingSlider = false;
 }
@@ -133,3 +146,20 @@ previousButton.onclick = previousSong;
 volumeSlider.oninput = onVolumeChange;
 progressSlider.onchange = onProgressSliderChange;
 progressSlider.onmousedown = sliderIsMoving;
+
+// aux
+function secondsToMMSS(seconds) {
+  const MM = Math.floor(seconds / 60);
+  const SS = seconds % 60;
+
+  let string = "";
+  if (MM < 10) string += "0";
+  string += MM;
+
+  string += ":";
+
+  if (SS < 10) string += "0";
+  string += SS;
+
+  return string;
+}
