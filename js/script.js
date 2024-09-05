@@ -8,8 +8,12 @@ const playButton = document.getElementById("play_button");
 const nextButton = document.getElementById("next_button");
 const previousButton = document.getElementById("previous_button");
 
+// sliders
+const volumeSlider = document.getElementById("volume_slider");
+
 // create audio player
 const audioPlayer = document.createElement("audio");
+audioPlayer.volume = 0.5;
 audioPlayer.src = "assets/audio/Me Jode - Las Dianas.mp3";
 
 // playlist
@@ -84,7 +88,15 @@ function previousSong() {
   updatePlayingSong();
 }
 
+// change of volume
+function onVolumeChange(event) {
+  const newVolume = event.target.value * 0.01;
+  audioPlayer.volume = newVolume;
+}
+
+
 // event setters
 playButton.onclick = onPlayButtonClick;
 nextButton.onclick = nextSong;
 previousButton.onclick = previousSong;
+volumeSlider.oninput = onVolumeChange;
