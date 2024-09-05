@@ -35,7 +35,7 @@ li {
 }
 
 .flex_column {
-  justify-content: center;
+  flex-direction: column;
 }
 
 .justify_left {
