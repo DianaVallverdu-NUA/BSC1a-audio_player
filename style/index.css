@@ -1,3 +1,37 @@
 #song_cover {
   object-fit: cover;
 }
+
+input[type="range"] {
+  appearance: none;
+  /* creating a custom design */
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+
+  /*  styling the track  */
+  height: 15px;
+
+  /* color */
+  overflow: hidden;
+
+  border-radius: 5px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 2px;
+  height: 15px;
+  border-radius: 50px;
+  background: #f09;
+}
+
+.box_neon_pink {
+  box-shadow: 0 0 2px #fff, 0 0 5px #fff, 0 0 16px #fff, 0 0 30px #f09,
+    0 0 35px #f09, 0 0 40px #f09, 0 0 45px #f09, 0 0 50px #f09;
+}
+
+.box_neon_yellow {
+  box-shadow: 0 0 3px #fff, 0 0 5px #fff, 0 0 7px #fff, 0 0 10px yellow,
+    0 0 12px yellow, 0 0 15px yellow, 0 0 17px yellow, 0 0 20px yellow;
+}

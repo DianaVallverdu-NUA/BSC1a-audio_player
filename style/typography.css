@@ -6,4 +6,9 @@
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
+
+
+  color: #fff;
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px yellow,
+    0 0 82px yellow, 0 0 92px yellow, 0 0 102px yellow, 0 0 151px yellow;
 }
