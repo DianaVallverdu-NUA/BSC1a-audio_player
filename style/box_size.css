@@ -90,6 +90,9 @@
 }
 
 /* margin */
+.margin_auto {
+  margin-bottom: auto;
+}
 .m_5px {
   margin: 5px;
 }
@@ -156,4 +159,9 @@
 
 .mt_40px {
   margin-top: 40px;
+}
+
+
+.mt_100px {
+  margin-top: 100px;
 }
