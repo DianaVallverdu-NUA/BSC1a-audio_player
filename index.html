@@ -24,17 +24,33 @@
         <!-- upper level -> song name, volume, play / pause, cover photo -->
         <div class="container">
           <!-- left -> song name and volume -->
-          <div class="container flex_column"></div>
+          <div class="container flex_column align_start">
+            <!-- top -> song name -->
+            <p id="song_name">SONG NAME</p>
+
+            <!-- bottom -> volume -->
+            <div class="container">
+              vol:
+              <input type="range" />
+            </div>
+          </div>
 
           <!-- middle -> play / pause / next / previous -->
-           <div class="container"></div>
+          <div class="container">
+            <p>PREV</p>
+            <p>PLAY</p>
+            <p>NEXT</p>
+          </div>
 
-           <!-- right -> cover photo -->
-            <div class="container"></div>
+          <!-- right -> cover photo -->
+          <div class="container"></div>
+          <img src="" />
         </div>
 
         <!-- lower level -> song slider -->
-        <div></div>
+        <div>
+          <input type="range" />
+        </div>
       </div>
     </div>
   </body>
