@@ -118,6 +118,8 @@ function onTimeUpdate() {
   if (movingSlider) return;
   progressSlider.value = Math.floor(audioPlayer.currentTime);
 }
+
+audioPlayer.onended = nextSong;
 audioPlayer.ontimeupdate = onTimeUpdate;
 
 // if slider changes, update audio
