@@ -42,6 +42,10 @@ li {
   justify-content: left;
 }
 
+.align_start {
+  align-items: flex-start;
+}
+
 .justify_space_between {
   justify-content: space-between;
 }
