@@ -25,73 +25,78 @@
     <div class="container width_100 height_100">
       <!-- main player container -->
       <div
-        class="container flex_column bg_soft_purple width_30 height_30 rounded_border box_neon_pink"
+        id="player_container"
+        class="width_30 height_30 rounded_border box_neon_pink"
       >
-        <!-- upper level -> song name, volume, play / pause, cover photo -->
-        <div class="container text_white justify_space_between width_100">
-          <!-- left -> song name and volume -->
-          <div
-            class="container flex_column align_start justify_space_between height_70 ml_10px"
-          >
-            <!-- top -> song name -->
-            <p id="song_name">Me Jode</p>
+        <div
+          class="container bg_soft_purple_a50 rounded_border flex_column width_100 height_100"
+        >
+          <!-- upper level -> song name, volume, play / pause, cover photo -->
+          <div class="container text_white justify_space_between width_100">
+            <!-- left -> song name and volume -->
+            <div
+              class="container flex_column align_start justify_space_between height_70 ml_10px"
+            >
+              <!-- top -> song name -->
+              <p id="song_name">Me Jode</p>
 
-            <!-- middle ->artist -->
-            <p>by <span id="artist_name">Las Dianas</span></p>
+              <!-- middle ->artist -->
+              <p>by <span id="artist_name">Las Dianas</span></p>
 
-            <!-- bottom -> volume -->
+              <!-- bottom -> volume -->
+              <div class="container">
+                <img class="width_20px" src="assets/icons/volume.svg" />
+                <input
+                  id="volume_slider"
+                  min="0"
+                  max="100"
+                  class="box_neon_yellow"
+                  type="range"
+                />
+              </div>
+            </div>
+
+            <!-- middle -> play / pause / next / previous -->
             <div class="container">
-              <img class="width_20px" src="assets/icons/volume.svg" />
-              <input
-                id="volume_slider"
-                min="0"
-                max="100"
-                class="box_neon_yellow"
-                type="range"
+              <img
+                id="previous_button"
+                class="clickable"
+                src="assets/icons/skip_previous.svg"
+              />
+              <img
+                id="play_button"
+                class="clickable"
+                src="assets/icons/play.svg"
+              />
+              <img
+                id="next_button"
+                class="clickable"
+                src="assets/icons/skip_next.svg"
               />
             </div>
-          </div>
 
-          <!-- middle -> play / pause / next / previous -->
-          <div class="container">
+            <!-- right -> cover photo -->
+            <div class="container"></div>
             <img
-              id="previous_button"
-              class="clickable"
-              src="assets/icons/skip_previous.svg"
-            />
-            <img
-              id="play_button"
-              class="clickable"
-              src="assets/icons/play.svg"
-            />
-            <img
-              id="next_button"
-              class="clickable"
-              src="assets/icons/skip_next.svg"
+              id="song_cover"
+              class="width_150px height_150px mr_10px"
+              src="assets/covers/dianas.png"
             />
           </div>
 
-          <!-- right -> cover photo -->
-          <div class="container"></div>
-          <img
-            id="song_cover"
-            class="width_150px height_150px mr_10px"
-            src="assets/covers/dianas.png"
-          />
-        </div>
-
-        <!-- lower level -> song slider -->
-        <div class="width_70 mt_10px container">
-          <p id="time_display_current" class="mr_5px">00:00</p>
-          <p>/</p>
-          <p id="time_display_total" class="mr_20px ml_5px">00:00</p>
-          <input
-            id="progress_slider"
-            min="0"
-            value="0"
-            class="box_neon_yellow"
-            type="range"
-          />
+          <!-- lower level -> song slider -->
+          <div class="width_70 mt_10px container">
+            <p id="time_display_current" class="mr_5px">00:00</p>
+            <p>/</p>
+            <p id="time_display_total" class="mr_20px ml_5px">00:00</p>
+            <input
+              id="progress_slider"
+              min="0"
+              value="0"
+              class="box_neon_yellow"
+              type="range"
+            />
+          </div>
         </div>
       </div>
     </div>

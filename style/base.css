@@ -83,6 +83,20 @@ li {
   background-color: rgb(159, 81, 159);
 }
 
+
+.bg_soft_purple_a50 {
+  background-color: rgba(159, 81, 159, 0.5);
+}
+
 .text_white {
   color: white;
+}
+
+/* opacity */
+.opacity_50 {
+  opacity: 0.5;
+}
+
+.opacity_100 {
+  opacity: 1;
 }

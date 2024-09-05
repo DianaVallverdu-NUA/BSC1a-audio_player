@@ -2,6 +2,11 @@
   object-fit: cover;
 }
 
+#player_container {
+  background-image: url('../assets/images/cassette.jpg');
+  background-size: cover;
+}
+
 input[type="range"] {
   appearance: none;
   /* creating a custom design */
