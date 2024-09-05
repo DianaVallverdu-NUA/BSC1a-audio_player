@@ -1,3 +1,40 @@
+/* width */
+.width_100 {
+  width: 100%;
+}
+
+.width_30 {
+  width: 30%;
+}
+
+.width_20px {
+  width: 20px;
+}
+
+.width_100px {
+  width: 100px;
+}
+
+.width_150px {
+  width: 150px;
+}
+
+/* height */
+.height_100 {
+  height: 100%;
+}
+
+.height_30 {
+  height: 30%;
+}
+
+.height_100px {
+  height: 100px;
+}
+
+.height_150px {
+  height: 150px;
+}
 /* padding */
 .p_5px {
   padding: 5px;

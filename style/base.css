@@ -58,23 +58,6 @@ li {
   border-radius: 10px;
 }
 
-/* size css */
-.width_100 {
-  width: 100%;
-}
-
-.width_30 {
-  width: 30%;
-}
-
-.height_100 {
-  height: 100%;
-}
-
-.height_30 {
-  height: 30%;
-}
-
 /* colour css */
 .bg_marine_blue {
   background-color: #036f8c;
