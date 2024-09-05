@@ -10,6 +10,9 @@
     <!-- padding and margin -->
     <link rel="stylesheet" href="./style/box_size.css" />
 
+    <!-- icons -->
+    <link rel="stylesheet" href="./style/icons.css" />
+
     <!-- scripts -->
     <script src="js/script.js" defer></script>
 
@@ -22,24 +25,27 @@
         class="container flex_column bg_soft_purple width_30 height_30 rounded_border"
       >
         <!-- upper level -> song name, volume, play / pause, cover photo -->
-        <div class="container">
+        <div class="container text_white">
           <!-- left -> song name and volume -->
           <div class="container flex_column align_start">
             <!-- top -> song name -->
-            <p id="song_name">SONG NAME</p>
+            <p id="song_name">Me Jode</p>
+
+            <!-- middle ->artist -->
+            <p>by <span id="artist_name">Las Dianas</span></p>
 
             <!-- bottom -> volume -->
             <div class="container">
-              vol:
+              <img id="volume_icon" src="assets/icons/volume.svg" />
               <input type="range" />
             </div>
           </div>
 
           <!-- middle -> play / pause / next / previous -->
           <div class="container">
-            <p>PREV</p>
-            <p>PLAY</p>
-            <p>NEXT</p>
+            <img src="assets/icons/skip_previous.svg" />
+            <img src="assets/icons/play.svg" />
+            <img src="assets/icons/skip_next.svg" />
           </div>
 
           <!-- right -> cover photo -->
