@@ -20,6 +20,14 @@
 }
 
 /* height */
+.height_50 {
+  height: 50%;
+}
+
+.height_70 {
+  height: 70%;
+}
+
 .height_100 {
   height: 100%;
 }
