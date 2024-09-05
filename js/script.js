@@ -57,22 +57,26 @@ function onPlayButtonClick() {
   playing = !playing;
 }
 
+// when a new src is loaded, update timings
+function onLoadedMetadata() {
+  progressSlider.max = Math.floor(audioPlayer.duration);
+  progressSlider.value = 0;
+}
+audioPlayer.onloadedmetadata = onLoadedMetadata;
+
 // restart playing after change of song
 function updatePlayingSong() {
   audioPlayer.pause();
-  // reset time
-  audioPlayer.currentTime = 0;
-  progressSlider.value = 0;
+
   // if beyond array -> reset
   if (songIndex >= songs.length) songIndex = 0;
-  if (songIndex < 0) songIndex = songs.length -1;
+  if (songIndex < 0) songIndex = songs.length - 1;
 
   // update src + displays
   audioPlayer.src = songs[songIndex].src;
   songName.innerHTML = songs[songIndex].name;
   artistName.innerHTML = songs[songIndex].artist;
   songCover.src = songs[songIndex].cover;
-
 
   // play if needed
   if (playing) audioPlayer.play();
@@ -96,7 +100,7 @@ function previousSong() {
 
 // as the audio progresses, update slider
 function onTimeUpdate() {
-  if(movingSlider) return;
+  if (movingSlider) return;
   const proportionalTime =
     (audioPlayer.currentTime / audioPlayer.duration) * 100;
   progressSlider.value = Math.floor(proportionalTime);
