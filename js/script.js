@@ -10,6 +10,7 @@ const previousButton = document.getElementById("previous_button");
 
 // sliders
 const volumeSlider = document.getElementById("volume_slider");
+const progressSlider = document.getElementById("progress_slider");
 
 // create audio player
 const audioPlayer = document.createElement("audio");
@@ -58,8 +59,13 @@ function onPlayButtonClick() {
 
 // restart playing after change of song
 function updatePlayingSong() {
+  audioPlayer.pause();
+  // reset time
+  audioPlayer.currentTime = 0;
+  progressSlider.value = 0;
   // if beyond array -> reset
   if (songIndex >= songs.length) songIndex = 0;
+  if (songIndex < 0) songIndex = songs.length -1;
 
   // update src + displays
   audioPlayer.src = songs[songIndex].src;
@@ -67,8 +73,6 @@ function updatePlayingSong() {
   artistName.innerHTML = songs[songIndex].artist;
   songCover.src = songs[songIndex].cover;
 
-  // reset time
-  audioPlayer.currentTime = 0;
 
   // play if needed
   if (playing) audioPlayer.play();
@@ -88,15 +92,40 @@ function previousSong() {
   updatePlayingSong();
 }
 
+// slider functionalities
+
+// as the audio progresses, update slider
+function onTimeUpdate() {
+  if(movingSlider) return;
+  const proportionalTime =
+    (audioPlayer.currentTime / audioPlayer.duration) * 100;
+  progressSlider.value = Math.floor(proportionalTime);
+}
+audioPlayer.ontimeupdate = onTimeUpdate;
+
+// if slider changes, update audio
+let movingSlider = false;
+function onProgressSliderChange(event) {
+  const sliderValue = Number(event.target.value);
+  const newAudioTime = sliderValue * 0.01 * audioPlayer.duration;
+  audioPlayer.currentTime = newAudioTime;
+  movingSlider = false;
+}
+
+function sliderIsMoving() {
+  movingSlider = true;
+}
+
 // change of volume
 function onVolumeChange(event) {
   const newVolume = event.target.value * 0.01;
   audioPlayer.volume = newVolume;
 }
 
-
 // event setters
 playButton.onclick = onPlayButtonClick;
 nextButton.onclick = nextSong;
 previousButton.onclick = previousSong;
 volumeSlider.oninput = onVolumeChange;
+progressSlider.onchange = onProgressSliderChange;
+progressSlider.onmousedown = sliderIsMoving;
