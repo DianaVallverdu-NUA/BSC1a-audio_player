@@ -50,13 +50,25 @@ li {
   flex-wrap: wrap;
 }
 
+.rounded_border {
+  border-radius: 10px;
+}
+
 /* size css */
 .width_100 {
   width: 100%;
 }
 
+.width_30 {
+  width: 30%;
+}
+
 .height_100 {
   height: 100%;
+}
+
+.height_30 {
+  height: 30%;
 }
 
 /* colour css */
@@ -78,6 +90,10 @@ li {
 
 .bg_green {
   background-color: rgb(113, 220, 113);
+}
+
+.bg_soft_purple {
+  background-color: rgb(159, 81, 159);
 }
 
 .text_white {
