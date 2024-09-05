@@ -3,6 +3,10 @@
   width: 100%;
 }
 
+.width_70 {
+  width: 70%;
+}
+
 .width_30 {
   width: 30%;
 }
@@ -91,6 +95,9 @@
 }
 .mr_5px {
   margin-right: 5px;
+}
+.mr_20px {
+  margin-right: 20px;
 }
 
 .m_10px {
