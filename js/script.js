@@ -17,7 +17,7 @@ const timeDisplayTotal = document.getElementById("time_display_total");
 const timeDisplayCurrent = document.getElementById("time_display_current");
 
 // create audio player
-const audioPlayer = document.createElement("audio");
+const audioPlayer = new Audio();
 audioPlayer.volume = 0.5;
 audioPlayer.src = "assets/audio/Me Jode - Las Dianas.mp3";
 
