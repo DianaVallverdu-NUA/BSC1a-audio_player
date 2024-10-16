@@ -18,16 +18,18 @@
 
     <!-- scripts -->
     <script src="js/script.js" defer></script>
+    <script src="js/dragdrop.js" defer></script>
 
     <title>HTML Template</title>
   </head>
   <body>
-    <div class="container flex_column height_100 width_100">
+    <div id="dropzone" class="container flex_column height_100 width_100">
       <h1 class="mt_40px">The Tontipop Music Player</h1>
       <!-- main player container -->
       <div
         id="player_container"
-        class="width_500px height_300px box_neon_pink mt_100px"
+        draggable="true"
+        class="width_500px height_300px box_neon_pink mt_100px container  flex_column  justify_space_between"
       >
         <div
           class="container justify_space_between bg_soft_purple_a50 rounded_border flex_column width_100 height_100"

@@ -40,3 +40,7 @@ input[type="range"]::-webkit-slider-thumb {
   box-shadow: 0 0 3px #fff, 0 0 5px #fff, 0 0 7px #fff, 0 0 10px yellow,
     0 0 12px yellow, 0 0 15px yellow, 0 0 17px yellow, 0 0 20px yellow;
 }
+
+#player_container {
+  position: relative;
+}
