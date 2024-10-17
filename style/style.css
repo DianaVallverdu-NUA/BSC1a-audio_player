@@ -1,3 +1,8 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
 /* display items with flex and center vertically & horizontally */
 .container {
   display: flex;
@@ -13,6 +18,10 @@
   flex-direction: column;
 }
 
+.justify-space-around {
+  justify-content: space-evenly;
+}
+
 #main-container {
   width: 100vw;
   height: 100vh;
@@ -21,5 +30,12 @@
 /* stiles for the audio container player */
 #audio-container {
   height: 300px;
+  width: 35%;
+  background-color: beige;
   margin-top: 10px;
+}
+
+#cover-img {
+  height: 200px;
+  width: 200px;
 }
