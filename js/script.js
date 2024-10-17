@@ -7,6 +7,9 @@ const playPauseButton = document.getElementById("play-button");
 // select progress slider
 const progressSlider = document.getElementById("progress-slider");
 
+// select volume slider
+const volumeSlider = document.getElementById("volume-slider");
+
 // audioPlayer.src is the first song of the audio player by default
 audioPlayer.src = "assets/sound/Sucks.mp3";
 
@@ -48,8 +51,16 @@ function onEnd() {
   playing = false;
 }
 
+/**
+ * take value of the volumeSlider and update audioPlayer.volume
+ */
+function onVolumeSliderChange() {
+  audioPlayer.volume = volumeSlider.value * 0.01;
+}
+
 //link all events to relevant objects
 playPauseButton.onclick = onPlayPauseClick;
 audioPlayer.onloadedmetadata = onLoadedMetadata;
 audioPlayer.ontimeupdate = onTimeUpdate;
 audioPlayer.onended = onEnd;
+volumeSlider.onchange = onVolumeSliderChange;
