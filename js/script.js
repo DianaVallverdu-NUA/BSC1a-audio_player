@@ -16,8 +16,12 @@ const durationText = document.getElementById("duration-text");
 
 // audioPlayer.src is the first song of the audio player by default
 audioPlayer.src = "assets/sound/Sucks.mp3";
+audioPlayer.volume = 0.5;
 
+//playing stores if the audioPlayer is currently playing
 let playing = false;
+
+//updatingProgress stores if the user is updating the progress in the progressBar
 let updatingProgress = false;
 
 /**
@@ -37,7 +41,7 @@ function onPlayPauseClick() {
 }
 
 /**
- *
+ * onLoadedMetadata updates the maximum of the progressSlider and the innerHTMl of the durationText to the new audioPlayer.duration - formatted where necessary
  */
 function onLoadedMetadata() {
   progressSlider.max = audioPlayer.duration;
@@ -46,7 +50,8 @@ function onLoadedMetadata() {
 }
 
 /**
- *
+ * onTimeUpdate updates the value of the progressSlider and the innerHTML of the progressText to audioPlayer.currentTime - formatted where necessary.
+ * If the user is updating the progressSlider, the value of the progressSlider will not be updated.
  */
 function onTimeUpdate() {
   if (!updatingProgress) {
@@ -56,6 +61,9 @@ function onTimeUpdate() {
   progressText.innerHTML = secondsToMMSS(audioPlayer.currentTime);
 }
 
+/**
+ * onEnd resets all necessary values for song to start playing again
+ */
 function onEnd() {
   progressSlider.value = 0;
   playPauseButton.innerHTML = "Play";
@@ -70,15 +78,26 @@ function onVolumeSliderChange() {
   audioPlayer.volume = volumeSlider.value * 0.01;
 }
 
+/**
+ * onProgressMouseDown updates the updatingProgress boolean to mark the user is updating the progressSlider
+ */
 function onProgressMouseDown() {
   updatingProgress = true;
 }
 
+/**
+ * onProgressSliderChange updates the currentTime of the audioPlayer to the value of the progressSlider and updatingProgress to false, to mark the user is not moving the slider anymore
+ */
 function onProgressSliderChange() {
   audioPlayer.currentTime = progressSlider.value;
   updatingProgress = false;
 }
 
+/**
+ * 
+ * @param {Number} seconds time in seconds
+ * @returns time formatted as "MM:SS"
+ */
 function secondsToMMSS(seconds) {
   const integerSeconds = parseInt(seconds);
 
@@ -93,11 +112,15 @@ function secondsToMMSS(seconds) {
   return MM + ":" + SS;
 }
 
-//link all events to relevant objects
+//play pause button events
 playPauseButton.onclick = onPlayPauseClick;
+
+//audio player events
 audioPlayer.onloadedmetadata = onLoadedMetadata;
 audioPlayer.ontimeupdate = onTimeUpdate;
 audioPlayer.onended = onEnd;
+
+//volume slider events
 volumeSlider.onchange = onVolumeSliderChange;
 progressSlider.onchange = onProgressSliderChange;
 progressSlider.onmousedown = onProgressMouseDown;
