@@ -30,7 +30,7 @@
 /* stiles for the audio container player */
 #audio-container {
   height: 300px;
-  width: 35%;
+  width: 1000px;
   background-color: beige;
   margin-top: 10px;
 }
