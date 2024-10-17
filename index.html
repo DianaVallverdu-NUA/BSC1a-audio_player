@@ -25,26 +25,28 @@
         <!-- volume + play, previous, next buttons + image cover container  -->
         <div class="container justify-space-around">
           <!-- volume -->
-           <div class="container">
-            <input id="volume-slider" type="range" min="0" max="100">
-           </div>
+          <div class="container">
+            <input id="volume-slider" type="range" min="0" max="100" />
+          </div>
 
-           <!-- play, previous, next buttons -->
-            <div id="container">
-              <button>Previous</button>
-              <button id="play-button">Play</button>
-              <button>Next</button>
-            </div>
+          <!-- play, previous, next buttons -->
+          <div id="container">
+            <button>Previous</button>
+            <button id="play-button">Play</button>
+            <button>Next</button>
+          </div>
 
-            <!-- image cover -->
-            <img id="cover-img" src="assets/covers/Sucks.png">
+          <!-- image cover -->
+          <img id="cover-img" src="assets/covers/Sucks.png" />
         </div>
 
-        
-
-        <!--  -->
+        <!-- Progress of song display -->
         <div class="container">
-          <input id="progress-slider" type="range" value="0">
+          <p>
+            <span id="progress-text">00:00</span> /
+            <span id="duration-text">00:00</span>
+          </p>
+          <input id="progress-slider" type="range" value="0" />
         </div>
       </div>
     </div>

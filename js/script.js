@@ -10,6 +10,10 @@ const progressSlider = document.getElementById("progress-slider");
 // select volume slider
 const volumeSlider = document.getElementById("volume-slider");
 
+// select progress text spans
+const progressText = document.getElementById("progress-text");
+const durationText = document.getElementById("duration-text");
+
 // audioPlayer.src is the first song of the audio player by default
 audioPlayer.src = "assets/sound/Sucks.mp3";
 
@@ -36,10 +40,12 @@ function onPlayPauseClick() {
  */
 function onLoadedMetadata() {
   progressSlider.max = audioPlayer.duration;
+
+  durationText.innerHTML = secondsToMMSS(audioPlayer.duration);
 }
 
 /**
- * 
+ *
  */
 function onTimeUpdate() {
   progressSlider.value = audioPlayer.currentTime;
@@ -56,6 +62,20 @@ function onEnd() {
  */
 function onVolumeSliderChange() {
   audioPlayer.volume = volumeSlider.value * 0.01;
+}
+
+function secondsToMMSS(seconds) {
+  const integerSeconds = parseInt(seconds);
+
+  //calculate seconds
+  let MM = parseInt(integerSeconds / 60);
+  if (MM < 10) MM = "0" + MM;
+
+  //calculate minutes
+  let SS = integerSeconds % 60;
+  if (SS < 10) SS = "0" + SS;
+
+  return MM + ":" + SS;
 }
 
 //link all events to relevant objects
