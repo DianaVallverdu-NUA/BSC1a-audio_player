@@ -1,0 +1,25 @@
+/* display items with flex and center vertically & horizontally */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* container properties + arrange items vertically */
+.vertical-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#main-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* stiles for the audio container player */
+#audio-container {
+  height: 300px;
+  margin-top: 10px;
+}
