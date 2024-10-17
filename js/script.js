@@ -18,6 +18,7 @@ const durationText = document.getElementById("duration-text");
 audioPlayer.src = "assets/sound/Sucks.mp3";
 
 let playing = false;
+let updatingProgress = false;
 
 /**
  * if audio player is playing -> do not play sound
@@ -48,13 +49,18 @@ function onLoadedMetadata() {
  *
  */
 function onTimeUpdate() {
-  progressSlider.value = audioPlayer.currentTime;
+  if (!updatingProgress) {
+    progressSlider.value = audioPlayer.currentTime;
+  }
+
+  progressText.innerHTML = secondsToMMSS(audioPlayer.currentTime);
 }
 
 function onEnd() {
   progressSlider.value = 0;
   playPauseButton.innerHTML = "Play";
   playing = false;
+  progressText.innerHTML = "00:00";
 }
 
 /**
@@ -62,6 +68,15 @@ function onEnd() {
  */
 function onVolumeSliderChange() {
   audioPlayer.volume = volumeSlider.value * 0.01;
+}
+
+function onProgressMouseDown() {
+  updatingProgress = true;
+}
+
+function onProgressSliderChange() {
+  audioPlayer.currentTime = progressSlider.value;
+  updatingProgress = false;
 }
 
 function secondsToMMSS(seconds) {
@@ -84,3 +99,5 @@ audioPlayer.onloadedmetadata = onLoadedMetadata;
 audioPlayer.ontimeupdate = onTimeUpdate;
 audioPlayer.onended = onEnd;
 volumeSlider.onchange = onVolumeSliderChange;
+progressSlider.onchange = onProgressSliderChange;
+progressSlider.onmousedown = onProgressMouseDown;
