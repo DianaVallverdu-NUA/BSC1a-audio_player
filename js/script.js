@@ -122,5 +122,7 @@ audioPlayer.onended = onEnd;
 
 //volume slider events
 volumeSlider.onchange = onVolumeSliderChange;
+
+// progress slider events
 progressSlider.onchange = onProgressSliderChange;
 progressSlider.onmousedown = onProgressMouseDown;
