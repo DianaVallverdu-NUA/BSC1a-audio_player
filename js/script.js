@@ -40,7 +40,11 @@ const songs = [
 
 // set playing at sond index to 0
 let playing = false;
+let progressSliderMoving = false; //updating progress
 let songIndex = 0;
+
+//store whether any of the sliders is changing
+let sliderIsChanging = false;
 
 // everything that needs to  happen when audio is played
 function playAudio() {
@@ -115,7 +119,7 @@ function onTimeUpdate() {
   timeDisplayCurrent.innerHTML = minutesSeconds;
 
   // update slider (if user is not moving it)
-  if (movingSlider) return;
+  if (progressSliderMoving) return;
   progressSlider.value = Math.floor(audioPlayer.currentTime);
 }
 
@@ -123,31 +127,43 @@ audioPlayer.onended = nextSong;
 audioPlayer.ontimeupdate = onTimeUpdate;
 
 // if slider changes, update audio
-let movingSlider = false;
+
 function onProgressSliderChange(event) {
   const sliderValue = Number(event.target.value);
   const newAudioTime = sliderValue;
   audioPlayer.currentTime = newAudioTime;
-  movingSlider = false;
+  progressSliderMoving = false;
+  sliderIsChanging = false;
 }
 
-function sliderIsMoving() {
-  movingSlider = true;
+function onProgressSliderMouseDown() {
+  progressSliderMoving = true;
+  sliderIsChanging = true;
 }
 
 // change of volume
 function onVolumeChange(event) {
   const newVolume = event.target.value * 0.01;
   audioPlayer.volume = newVolume;
+  sliderIsChanging = false;
 }
 
-// event setters
+function onVolumeMouseDown() {
+  sliderIsChanging = true;
+}
+
+
+// play button
 playButton.onclick = onPlayButtonClick;
 nextButton.onclick = nextSong;
 previousButton.onclick = previousSong;
-volumeSlider.oninput = onVolumeChange;
+
+//volume events
+volumeSlider.onchange = onVolumeChange;
+volumeSlider.onmousedown = onVolumeMouseDown;
+
 progressSlider.onchange = onProgressSliderChange;
-progressSlider.onmousedown = sliderIsMoving;
+progressSlider.onmousedown = onProgressSliderMouseDown;
 
 // aux
 function secondsToMMSS(seconds) {
